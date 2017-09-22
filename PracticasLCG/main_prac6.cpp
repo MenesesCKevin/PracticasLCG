@@ -83,7 +83,7 @@ void display(void)   // Creamos la funcion donde se dibuja
 			glRotatef(mercurio-3, 0.0, -1.0, 0.0);
 			glutWireSphere(0.3, 10, 10);
 		glPopMatrix();
-	glPopMatrix();
+		glPopMatrix();
 
 	//venus
 	glPushMatrix();

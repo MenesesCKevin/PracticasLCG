@@ -1,4 +1,4 @@
-﻿  main_prac6.cpp
-c:\users\k322\documents\septimo semestre\laboratorio de computación gráfica\plcg_menesescornejokevin\practicaslcg\main_prac6.cpp(40): warning C4838: la conversión de 'double' en 'GLfloat' requiere una conversión de restricción
+﻿  main_prac6_atomo.cpp
+c:\users\k322\documents\septimo semestre\laboratorio de computación gráfica\plcg_menesescornejokevin\practicaslcg\main_prac6_atomo.cpp(40): warning C4838: la conversión de 'double' en 'GLfloat' requiere una conversión de restricción
   PracticasLCG.vcxproj -> C:\Users\k322\Documents\Septimo Semestre\Laboratorio de Computación gráfica\PLCG_MenesesCornejoKevin\PracticasLCG\Debug\PracticasLCG.exe
   PracticasLCG.vcxproj -> C:\Users\k322\Documents\Septimo Semestre\Laboratorio de Computación gráfica\PLCG_MenesesCornejoKevin\PracticasLCG\Debug\PracticasLCG.pdb (Partial PDB)
