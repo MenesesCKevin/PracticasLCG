@@ -16,6 +16,7 @@ GLfloat Diffuse[]= { 0.5f, 0.5f, 0.5f, 1.0f };				// Diffuse Light Values
 GLfloat Specular[] = { 1.0, 1.0, 1.0, 1.0 };				// Specular Light Values
 GLfloat Position[]= { 0.0f, 3.0f, 0.0f, 1.0f };			// Light Position
 GLfloat Position2[]= { 0.0f, -5.0f, 0.0f, 1.0f };			// Light Position
+int repeticiones;
 
 
 CTexture t_Ajedrez1;
@@ -119,10 +120,10 @@ void prisma (GLuint textura1, GLuint textura2)  //Funcion creacion prisma
 		glBegin(GL_POLYGON);	//Front
 			glColor3f(1.0,1.0,1.0);
 			glNormal3f( 0.0f, 0.0f, 1.0f);
-			glTexCoord2f(0.0f, 0.0f); glVertex3fv(vertice[0]);
-			glTexCoord2f(1.0f, 0.0f); glVertex3fv(vertice[4]);
-			glTexCoord2f(1.0f, 1.0f); glVertex3fv(vertice[7]);
-			glTexCoord2f(0.0f, 1.0f); glVertex3fv(vertice[1]);
+			glTexCoord2f(1.0f, 0.0f); glVertex3fv(vertice[0]);
+			glTexCoord2f(1.0f, 1.0f); glVertex3fv(vertice[4]);
+			glTexCoord2f(0.0f, 1.0f); glVertex3fv(vertice[7]);
+			glTexCoord2f(0.0f, 0.0f); glVertex3fv(vertice[1]);
 		glEnd();
 	
 		glBegin(GL_POLYGON);	//Right
@@ -183,134 +184,159 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		//pared frontal izquierda
 		glPushMatrix(); 
-			glScalef(8.0,4.0,2.0);  
+			glScalef(8.0,4.0,0.5);  
 			prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 			glTranslatef(-3.0, 4.5, 0.0);
-			glScalef(2.0, 5.0, 2.0);
+			glScalef(2.0, 5.0, 0.5);
 			prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 			glTranslatef(3.0, 4.5, 0.0);
-			glScalef(2.0, 5.0, 2.0);
+			glScalef(2.0, 5.0, 0.5);
 			prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 			glTranslatef(0.0, 4.5, 0.0);
-			glScalef(4.0, 5.0, 2.0);
-			prisma(t_made.GLindex, t_ventana.GLindex);
+			glScalef(4.0, 5.0, 0.5);
+			prisma(t_madera.GLindex, t_ventana.GLindex);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
 			glTranslatef(6.0, 4.5, 0.0);
-			glScalef(4.0, 13.0, 2.0);
-			prisma(t_made.GLindex, t_puerta.GLindex);
+			glScalef(4.0, 13.0, 0.5);
+			prisma(t_madera.GLindex, t_puerta.GLindex);
 		glPopMatrix();
+		//dintel
+		glPushMatrix();
+		glTranslatef(6.0, 12, 0.0);
+		glScalef(14.0, 2.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
+			glPushMatrix();
+			glTranslatef(0.0, 1.0, 0.0);
+			glScalef(-0.5, 1.0, 1.0);
+			prisma(t_madera.GLindex, t_madera.GLindex);
+			glPopMatrix();
+		glPopMatrix();
+
 		glPushMatrix();
 			glTranslatef(0.0, 9.0, 0.0);
-			glScalef(8.0,4.0, 2.0);
-			prisma(t_made.GLindex, t_madera.GLindex);
+			glScalef(8.0,4.0, 0.5);
+			prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//pared frontal derecha
 		glPushMatrix();
 		glTranslatef(12.0, 0.0, 0.0);
 			glPushMatrix();
-			glScalef(8.0, 4.0, 2.0);
+			glScalef(8.0, 4.0, 0.5);
 			prisma(t_madera.GLindex, t_madera.GLindex);
 			glPopMatrix();
 			glPushMatrix();
 			glTranslatef(-3.0, 4.5, 0.0);
-			glScalef(2.0, 5.0, 2.0);
+			glScalef(2.0, 5.0, 0.5);
 			prisma(t_madera.GLindex, t_madera.GLindex);
 			glPopMatrix();
 			glPushMatrix();
 			glTranslatef(3.0, 4.5, 0.0);
-			glScalef(2.0, 5.0, 2.0);
+			glScalef(2.0, 5.0, 0.5);
 			prisma(t_madera.GLindex, t_madera.GLindex);
 			glPopMatrix();
 			//ventana
 			glPushMatrix();
 			glTranslatef(0.0, 4.5, 0.0);
-			glScalef(4.0, 5.0, 2.0);
-			prisma(t_made.GLindex, t_ventana.GLindex);
+			glScalef(4.0, 5.0, 0.5);
+			prisma(t_madera.GLindex, t_ventana.GLindex);
 			glPopMatrix();
 			glPushMatrix();
 			glTranslatef(0.0, 9.0, 0.0);
-			glScalef(8.0, 4.0, 2.0);
-			prisma(t_made.GLindex, t_madera.GLindex);
+			glScalef(8.0, 4.0, 0.5);
+			prisma(t_madera.GLindex, t_madera.GLindex);
 			glPopMatrix();
 		glPopMatrix();
 		glPopMatrix();
 
 
 		//pared trasera
-		//pared
 		glPushMatrix();
 		glTranslatef(0.0, 0.0, -20.0);
 		//pared frontal izquierda
 		glPushMatrix();
-		glScalef(8.0, 4.0, 2.0);
+		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(-3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
-		glScalef(4.0, 5.0, 2.0);
-		prisma(t_made.GLindex, t_ventana.GLindex);
+		glScalef(4.0, 5.0, 0.5);
+		prisma(t_madera.GLindex, t_ventana.GLindex);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
 		glTranslatef(6.0, 4.5, 0.0);
-		glScalef(4.0, 13.0, 2.0);
-		prisma(t_made.GLindex, t_puerta.GLindex);
+		glScalef(4.0, 13.0, 0.5);
+		prisma(t_madera.GLindex, t_puerta.GLindex);
+		glPopMatrix();
+
+		//dintel
+		glPushMatrix();
+		glTranslatef(6.0, 12, 0.0);
+		glScalef(14.0, 2.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
+		glPushMatrix();
+		glTranslatef(0.0, 1.0, 0.0);
+		glScalef(-0.5, 1.0, 1.0);
+		prisma(t_madera.GLindex, t_madera.GLindex);
+		glPopMatrix();
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
-		glScalef(8.0, 4.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(8.0, 4.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//pared frontal derecha
 		glPushMatrix();
 		glTranslatef(12.0, 0.0, 0.0);
 		glPushMatrix();
-		glScalef(8.0, 4.0, 2.0);
+		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(-3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
-		glScalef(4.0, 5.0, 2.0);
-		prisma(t_made.GLindex, t_ventana.GLindex);
+		glScalef(4.0, 5.0, 0.5);
+		prisma(t_madera.GLindex, t_ventana.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
-		glScalef(8.0, 4.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(8.0, 4.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPopMatrix();
 		glPopMatrix();
+
+
 		//pared izquierda
 		//pared
 		glPushMatrix();
@@ -319,140 +345,156 @@ void display ( void )   // Creamos la funcion donde se dibuja
 
 		//pared frontal izquierda
 		glPushMatrix();
-		glScalef(8.0, 4.0, 2.0);
+		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(-3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
-		glScalef(4.0, 5.0, 2.0);
-		prisma(t_made.GLindex, t_made.GLindex);
+		glScalef(4.0, 5.0, 0.5);
+		prisma(t_madera.GLindex, t_made.GLindex);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
 		glTranslatef(6.0, 4.5, 0.0);
-		glScalef(4.0, 13.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(4.0, 13.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
-		glScalef(8.0, 4.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(8.0, 4.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//pared frontal derecha
 		glPushMatrix();
 		glTranslatef(12.0, 0.0, 0.0);
 		glPushMatrix();
-		glScalef(8.0, 4.0, 2.0);
+		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(-3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
-		glScalef(4.0, 5.0, 2.0);
-		prisma(t_made.GLindex, t_made.GLindex);
+		glScalef(4.0, 5.0, 0.5);
+		prisma(t_madera.GLindex, t_made.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
-		glScalef(8.0, 4.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(8.0, 4.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPopMatrix();
 		glPopMatrix();
 		//pared derecha
-		//pared izquierda
-		//pared
 		glPushMatrix();
 		glTranslatef(16.0, 0.0, -4.0);
 		glRotatef(90, 0.0, 1.0, 0.0);
 		//pared frontal izquierda
 		glPushMatrix();
-		glScalef(8.0, 4.0, 2.0);
+		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(-3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
-		glScalef(4.0, 5.0, 2.0);
-		prisma(t_made.GLindex, t_made.GLindex);
+		glScalef(4.0, 5.0, 0.5);
+		prisma(t_madera.GLindex, t_made.GLindex);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
 		glTranslatef(6.0, 4.5, 0.0);
-		glScalef(4.0, 13.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(4.0, 13.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
-		glScalef(8.0, 4.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(8.0, 4.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//pared frontal derecha
 		glPushMatrix();
 		glTranslatef(12.0, 0.0, 0.0);
 		glPushMatrix();
-		glScalef(8.0, 4.0, 2.0);
+		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(-3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(3.0, 4.5, 0.0);
-		glScalef(2.0, 5.0, 2.0);
+		glScalef(2.0, 5.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		//ventana
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
-		glScalef(4.0, 5.0, 2.0);
-		prisma(t_made.GLindex, t_made.GLindex);
+		glScalef(4.0, 5.0, 0.5);
+		prisma(t_madera.GLindex, t_made.GLindex);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
-		glScalef(8.0, 4.0, 2.0);
-		prisma(t_made.GLindex, t_madera.GLindex);
+		glScalef(8.0, 4.0, 0.5);
+		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
 		glPopMatrix();
 		glPopMatrix();
 
-	glPushMatrix();
-		glTranslatef(6.0, 10.5, -10.0);
-		glScalef(20.0, 1.0, 20.0);
+		//techo
+		glPushMatrix();
+		glRotatef(90, 0.0, 1.0, 0.0);
+		glPushMatrix();
+		glTranslatef(10.0, 13.5, 12.0);
+		glRotatef(30, 1.0, 0.0, 0.0);
+		glScalef(24.0, 0.5, 15.0);
 		prisma(t_made.GLindex, t_made.GLindex);
 		glPopMatrix();
+
+		glPushMatrix();
+		glRotatef(180, 0.0, 1.0, 0.0);
+		glPushMatrix();
+		glTranslatef(-10.0, 13.5, 0.0);
+		glRotatef(30, 1.0, 0.0, 0.0);
+		glScalef(24.0, 0.5, 15.0);
+		prisma(t_made.GLindex, t_made.GLindex);
+		glPopMatrix();
+		glPopMatrix();
+
+		
+		glPopMatrix();
+
 	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
 		renderBitmapCharacter(-11, 12.0, -14.0, (void *)font, "Practica 8");
