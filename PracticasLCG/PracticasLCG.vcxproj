@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main_prac8_texto.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="figuras.cpp" />
+    <ClCompile Include="main_prac9_ventanas.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="figuras.h" />
     <ClInclude Include="texture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

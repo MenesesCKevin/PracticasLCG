@@ -201,7 +201,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 			glTranslatef(0.0, 4.5, 0.0);
 			glScalef(4.0, 5.0, 0.5);
+			glEnable(GL_ALPHA_TEST);
+			glAlphaFunc(GL_GREATER, 0.1);
 			prisma(t_madera.GLindex, t_ventana.GLindex);
+			glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
@@ -247,7 +250,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 			glPushMatrix();
 			glTranslatef(0.0, 4.5, 0.0);
 			glScalef(4.0, 5.0, 0.5);
+			glEnable(GL_ALPHA_TEST);
+			glAlphaFunc(GL_GREATER, 0.1);
 			prisma(t_madera.GLindex, t_ventana.GLindex);
+			glDisable(GL_ALPHA_TEST);
 			glPopMatrix();
 			glPushMatrix();
 			glTranslatef(0.0, 9.0, 0.0);
@@ -280,13 +286,19 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
 		glScalef(4.0, 5.0, 0.5);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.1);
 		prisma(t_madera.GLindex, t_ventana.GLindex);
+		glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
 		glTranslatef(6.0, 4.5, 0.0);
 		glScalef(4.0, 13.0, 0.5);
+		glPushMatrix();
+		glRotatef(180, 0.0, 0.0, 1.0);
 		prisma(t_madera.GLindex, t_puerta.GLindex);
+		glPopMatrix();
 		glPopMatrix();
 
 		//dintel
@@ -305,7 +317,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glScalef(8.0, 4.0, 0.5);
 		prisma(t_madera.GLindex, t_madera.GLindex);
 		glPopMatrix();
-		//pared frontal derecha
+		//pared trasera derecha
 		glPushMatrix();
 		glTranslatef(12.0, 0.0, 0.0);
 		glPushMatrix();
@@ -326,7 +338,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
 		glScalef(4.0, 5.0, 0.5);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.1);
 		prisma(t_madera.GLindex, t_ventana.GLindex);
+		glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
@@ -362,7 +377,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
 		glScalef(4.0, 5.0, 0.5);
-		prisma(t_madera.GLindex, t_made.GLindex);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.1);
+		prisma(t_madera.GLindex, t_ventana.GLindex);
+		glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
@@ -396,7 +414,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
 		glScalef(4.0, 5.0, 0.5);
-		prisma(t_madera.GLindex, t_made.GLindex);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.1);
+		prisma(t_madera.GLindex, t_ventana.GLindex);
+		glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
@@ -428,7 +449,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
 		glScalef(4.0, 5.0, 0.5);
-		prisma(t_madera.GLindex, t_made.GLindex);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.1);
+		prisma(t_madera.GLindex, t_ventana.GLindex);
+		glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		//puerta
 		glPushMatrix();
@@ -462,7 +486,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix();
 		glTranslatef(0.0, 4.5, 0.0);
 		glScalef(4.0, 5.0, 0.5);
-		prisma(t_madera.GLindex, t_made.GLindex);
+		glEnable(GL_ALPHA_TEST);
+		glAlphaFunc(GL_GREATER, 0.1);
+		prisma(t_madera.GLindex, t_ventana.GLindex);
+		glDisable(GL_ALPHA_TEST);
 		glPopMatrix();
 		glPushMatrix();
 		glTranslatef(0.0, 9.0, 0.0);
