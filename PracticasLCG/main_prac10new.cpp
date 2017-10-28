@@ -59,16 +59,11 @@ float movhalcon = 0.0;
 bool g_fanimacion = false;
 float girollanta=0.0;
 float reversa;
-bool vuelta;
+bool vuelta=0;
 float giro=0;
 bool direccion;
 
 int i;
-
-/*variables de mau*/
-
-float girom = 0;
-float cambio=1;
 float angulo=0;
 float dirgiro=1;
 
@@ -172,8 +167,10 @@ void display ( void )   // Creamos la funcion donde se dibuja
 
 			glPushMatrix();
 				//Para que el coche conserve sus colores
+				if(vuelta==1)
+				glRotatef(90, 0.0, 1.0, 0.0);
+				else
 				glRotatef(270, 0.0, 1.0, 0.0);
-				glRotatef(angulo, 0.0, 1.0, 0.0);
 				glDisable(GL_COLOR_MATERIAL);
 				
 				glTranslatef(0, 1.6, 0);
@@ -186,24 +183,25 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		        glScalef(0.2, 0.2, 0.2);
 				glPushMatrix();
 				//trasera izquierda
-				glTranslatef(-6.0, -1.0, 7.5);
+				glTranslatef(-1.0, -1.0, 40);
 				glRotatef(girollanta, 1.0, 0.0, 0.0);
 				llanta.GLrender(NULL, _SHADED, 1.0);
 				glPopMatrix();
+				//llanta trasea derecha
 				glPushMatrix();
-				glTranslatef(6.0, -1.0, 7.5);
+				glTranslatef(1.0, -1.0, 40);
 				glRotatef(180, 0.0, 1.0, 0.0);
 				glRotatef(girollanta, -1.0, 0.0, 0.0);
 				llanta.GLrender(NULL, _SHADED, 1.0);
 				glPopMatrix();
 				glPushMatrix();
-				glTranslatef(6.0, -1.0, -9.5);
+				glTranslatef(8.0, -1.0, -7);
 				glRotatef(180, 0.0, 1.0, 0.0);
 				glRotatef(girollanta, -1.0, 0.0, 0.0);
 				llanta.GLrender(NULL, _SHADED, 1.0);
 				glPopMatrix();
 				glPushMatrix();
-				glTranslatef(-6.0, -1.0, -9.5);
+				glTranslatef(-8.0, -1.0, -7);
 				glRotatef(girollanta, 1.0, 0.0, 0.0);
 				llanta.GLrender(NULL, _SHADED, 1.0);
 				glPopMatrix();
@@ -290,64 +288,8 @@ void display ( void )   // Creamos la funcion donde se dibuja
 }
 
 
-void animacion()
-{
-	fig3.text_izq -= 0.001;
-	fig3.text_der -= 0.001;
-	if (fig3.text_izq<-1)
-		fig3.text_izq = 0;
-	if (fig3.text_der<0)
-		fig3.text_der = 1;
 
 
-	if (g_fanimacion)
-	{
-		if (girom == 1)
-		{
-			if (dirgiro == 1)
-				if (angulo <= 180)
-				{
-					angulo += 1;
-				}
-				else
-				{
-					girom = 0;
-					dirgiro = 0;
-					cambio = 0;
-				}
-			if (dirgiro == 0)
-				if (angulo >= 0)
-				{
-					angulo -= 1;
-				}
-				else
-				{
-					girom = 0;
-					dirgiro = 1;
-					cambio = 1;
-				}
-		}
-		else {
-			if (movhalcon == 130)
-			{
-				girom = 1;
-				cambio = 0;
-			}
-			if (movhalcon == -130)
-			{
-				girom = 1;
-				cambio = 1;
-			}
-			if (cambio == 1)
-				movhalcon += 1;
-			else
-				movhalcon -= 1;
-		}
-	}
-	glutPostRedisplay();
-
-}
-/*
 void animacion()
 {
 	fig3.text_izq-= 0.001;
@@ -361,23 +303,28 @@ void animacion()
 	if (g_fanimacion)
 	{
 
-		if (vuelta == 1) {
-			giro += 1;
-			if (giro == 180) {
-				vuelta = 0;
-				direccion = 0;
-			}
-			else if (giro == 360) {
-				vuelta = 0;
-				direccion = 1;
-			}
+		if (movhalcon == 40) {
+			reversa = 1;
+			vuelta = 1;
 		}
-
+		if (movhalcon == -40)
+		{
+			reversa = 0;
+			vuelta = 0;
+		}
+		if (reversa == 1) {
+			movhalcon-= 1.0;
+			girollanta -= 5.0;
+		}
+		if (reversa == 0) {
+			movhalcon += 1.0;
+			girollanta += 5.0;
+		}
 	}
 		glutPostRedisplay();
 	
 }
-*/
+
 void reshape ( int width , int height )   // Creamos funcion Reshape
 {
   if (height==0)										// Prevenir division entre cero
