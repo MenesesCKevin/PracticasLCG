@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Practica11\Practica4\Practica4\texture.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="figuras.cpp" />
-    <ClCompile Include="main_prac10new.cpp" />
-    <ClCompile Include="texture.cpp" />
+    <ClCompile Include="main_prac11.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
